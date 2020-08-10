@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import Page from "./Page"
 import Axios from "axios"
 
 function HomeGuest() {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [pass, setPass] = useState();
+
   // prevent browser's default behaviour
   // by default, when browser sees you submitting a form  it's going to try to send that off to a brand
   // new URL and load an entirely new HTML document.
@@ -11,13 +15,13 @@ function HomeGuest() {
     // we want to send off a post request to our backend server.
     try {
       await Axios.post("http://localhost:8080/register", {
-        username: "test2",
-        email: "test2@test.com",
-        password: "qwerty123456",
+        username: username,
+        email: email,
+        password: pass
       });
-      console.log("User was successfully created.");
+      console.log("User was successfully created.")
     } catch (error) {
-      console.log("There was an error.");
+      console.log("There was an error.")
     }
   }
   return (
@@ -39,6 +43,7 @@ function HomeGuest() {
                 <small>Username</small>
               </label>
               <input
+                onChange={ (e)=> setUsername(e.target.value) }
                 id="username-register"
                 name="username"
                 className="form-control"
@@ -52,6 +57,7 @@ function HomeGuest() {
                 <small>Email</small>
               </label>
               <input
+                onChange={ (e) => setEmail(e.target.value) }
                 id="email-register"
                 name="email"
                 className="form-control"
@@ -65,6 +71,7 @@ function HomeGuest() {
                 <small>Password</small>
               </label>
               <input
+                onChange={ (e) => setPass(e.target.value) }
                 id="password-register"
                 name="password"
                 className="form-control"
