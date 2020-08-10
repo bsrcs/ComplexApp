@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Container from "./Container";
 
 // this way we dont need to dublicate things within multiple components
+// this is called composition
 function Page(props) {
   useEffect( () => {
     document.title = `${props.title} | Complex App`;

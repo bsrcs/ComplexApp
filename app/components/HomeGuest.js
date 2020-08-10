@@ -1,35 +1,81 @@
-import React from "react";
-import Page from "./Page";
+import React from "react"
+import Page from "./Page"
+import Axios from "axios"
 
-function HomeGuest(){
-  return(
+function HomeGuest() {
+  // prevent browser's default behaviour
+  // by default, when browser sees you submitting a form  it's going to try to send that off to a brand
+  // new URL and load an entirely new HTML document.
+  async function handleSubmit(event) {
+    event.preventDefault()
+    // we want to send off a post request to our backend server.
+    try {
+      await Axios.post("http://localhost:8080/register", {
+        username: "test2",
+        email: "test2@test.com",
+        password: "qwerty123456",
+      });
+      console.log("User was successfully created.");
+    } catch (error) {
+      console.log("There was an error.");
+    }
+  }
+  return (
     <Page wide={true} title="Welcome!">
       <div className="row align-items-center">
         <div className="col-lg-7 py-3 py-md-5">
           <h1 className="display-3">Remember Writing?</h1>
-          <p className="lead text-muted">Are you sick of short tweets and impersonal &ldquo;shared&rdquo; posts that are reminiscent of the late 90&rsquo;s email forwards? We believe getting back to actually writing is the key to enjoying the internet again.</p>
+          <p className="lead text-muted">
+            Are you sick of short tweets and impersonal &ldquo;shared&rdquo;
+            posts that are reminiscent of the late 90&rsquo;s email forwards? We
+            believe getting back to actually writing is the key to enjoying the
+            internet again.
+          </p>
         </div>
         <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username-register" className="text-muted mb-1">
                 <small>Username</small>
               </label>
-              <input id="username-register" name="username" className="form-control" type="text" placeholder="Pick a username" autoComplete="off" />
+              <input
+                id="username-register"
+                name="username"
+                className="form-control"
+                type="text"
+                placeholder="Pick a username"
+                autoComplete="off"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email-register" className="text-muted mb-1">
                 <small>Email</small>
               </label>
-              <input id="email-register" name="email" className="form-control" type="text" placeholder="you@example.com" autoComplete="off" />
+              <input
+                id="email-register"
+                name="email"
+                className="form-control"
+                type="text"
+                placeholder="you@example.com"
+                autoComplete="off"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password-register" className="text-muted mb-1">
                 <small>Password</small>
               </label>
-              <input id="password-register" name="password" className="form-control" type="password" placeholder="Create a password" />
+              <input
+                id="password-register"
+                name="password"
+                className="form-control"
+                type="password"
+                placeholder="Create a password"
+              />
             </div>
-            <button type="submit" className="py-3 mt-4 btn btn-lg btn-success btn-block">
+            <button
+              type="submit"
+              className="py-3 mt-4 btn btn-lg btn-success btn-block"
+            >
               Sign up for ComplexApp
             </button>
           </form>
@@ -39,4 +85,4 @@ function HomeGuest(){
   )
 }
 
-export default HomeGuest;
+export default HomeGuest
