@@ -3,15 +3,16 @@ import Page from "./Page"
 import Axios from "axios"
 
 function HomeGuest() {
+  // create 3 pieces of state
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
+  const [pass, setPassword] = useState();
 
   // prevent browser's default behaviour
   // by default, when browser sees you submitting a form  it's going to try to send that off to a brand
   // new URL and load an entirely new HTML document.
   async function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     // we want to send off a post request to our backend server.
     try {
       await Axios.post("http://localhost:8080/register", {
@@ -56,6 +57,7 @@ function HomeGuest() {
               <label htmlFor="email-register" className="text-muted mb-1">
                 <small>Email</small>
               </label>
+              {/* kullanici mail adresini girince state icindeki degeri 'setEmail' update eder */}
               <input
                 onChange={ (e) => setEmail(e.target.value) }
                 id="email-register"
@@ -71,7 +73,7 @@ function HomeGuest() {
                 <small>Password</small>
               </label>
               <input
-                onChange={ (e) => setPass(e.target.value) }
+                onChange={ (e) => setPassword(e.target.value) }
                 id="password-register"
                 name="password"
                 className="form-control"
