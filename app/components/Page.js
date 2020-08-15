@@ -11,7 +11,7 @@ function Page(props) {
 
   return (
     <Container wide={props.wide}>
-      {props.children};
+      {props.children}
     </Container>
   )
 }

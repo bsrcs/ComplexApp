@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 
 function HeaderLoggedOut(props) {
@@ -14,8 +14,8 @@ function HeaderLoggedOut(props) {
         // store 3 properties in web browser's local storage so that we can access them later
         localStorage.setItem("complexappToken", response.data.token);
         localStorage.setItem("complexappUsername", response.data.username);
-        localStorage.setItem("complexappavatar", response.data.avatar);
-        
+        localStorage.setItem("complexappAvatar", response.data.avatar);
+
         props.setLoggedIn(true);
       }else{
         console.log("Incorrect username/ password");

@@ -9,7 +9,7 @@ function HeaderLoggedIn(props) {
     localStorage.removeItem("complexappUsername");
     localStorage.removeItem("complexappAvatar");
   }
-
+  
   return (
     <div className="flex-row my-3 my-md-0">
       <Link to="#" className="text-white mr-2 header-search-icon">
