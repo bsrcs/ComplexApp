@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
-function HeaderLoggedOut() {
+function HeaderLoggedOut(props) {
   // store the username and password
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -11,7 +11,12 @@ function HeaderLoggedOut() {
     try {
       const response = await Axios.post("http://localhost:8080/login", {username,password});
       if(response.data){
-        console.log(response.data);
+        // store 3 properties in web browser's local storage so that we can access them later
+        localStorage.setItem("complexappToken", response.data.token);
+        localStorage.setItem("complexappUsername", response.data.username);
+        localStorage.setItem("complexappavatar", response.data.avatar);
+        
+        props.setLoggedIn(true);
       }else{
         console.log("Incorrect username/ password");
       }
