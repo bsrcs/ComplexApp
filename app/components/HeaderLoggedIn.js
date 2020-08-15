@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "react-router-dom";
+
 function HeaderLoggedIn(props) {
   function handleLogOut(){
     // "loggedIn" degerini false yapip "logout" ekranina git.

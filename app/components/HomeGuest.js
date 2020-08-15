@@ -15,7 +15,7 @@ function HomeGuest() {
     event.preventDefault();
     // we want to send off a post request to our backend server.
     try {
-      await Axios.post("http://localhost:8080/register", {
+      await Axios.post("/register", {
         username: username,
         email: email,
         password: pass
