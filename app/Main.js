@@ -13,6 +13,7 @@ import About from "./components/About";
 import Terms from "./components/Terms";
 import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
+import ViewSingleCode from "./components/ViewSingleCode";
 
 // ctrl+D ye basarak butun "class"lari "className"e cevir.
 // base url of our domain is "/"
@@ -30,6 +31,10 @@ function Main(){
         </Route>
         <Route path="/about-us">
           <About />
+        </Route>
+        {/* her post icin unique olacak id konulur. */}
+        <Route path="/post/:id">
+          <ViewSingleCode />
         </Route>
         <Route path="/create-post">
           <CreatePost />
